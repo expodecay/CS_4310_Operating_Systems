@@ -12,36 +12,41 @@ public class version_1 implements processInterface
     private int parent;
     private LinkedList<Integer> children;
 
+    public version_1(int id){
+        this.parent = id;
+        this.children = new LinkedList<>();
+    }
+
     public int get_parent() {
-        return 0;
+        return this.parent;
     }
 
     public int get_first_child() {
-        return 0;
+        return Integer.MIN_VALUE;
     }
 
     public int get_older_sibling() {
-        return 0;
+        return Integer.MIN_VALUE;
     }
 
     public int get_younger_sibling() {
-        return 0;
+        return Integer.MIN_VALUE;
     }
 
-    public static int set_parent(int parentID) {
-        return 0;
+    public int set_parent(int parentID) {
+        return this.parent = parentID;
     }
 
     public int set_first_child(int firstChild) {
-        return 0;
+        return Integer.MIN_VALUE;
     }
 
     public int set_younger_sibling(int youngerSibling) {
-        return 0;
+        return Integer.MIN_VALUE;
     }
 
     public int set_older_sibling(int olderSibling) {
-        return 0;
+        return Integer.MIN_VALUE;
     }
 
     /**
