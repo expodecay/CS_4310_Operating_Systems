@@ -19,6 +19,4 @@ public class version_1_2_test
     public static void main(String[] args) {
 
     }
-
-
 }

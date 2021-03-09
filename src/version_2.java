@@ -8,43 +8,48 @@
 
 public class version_2 implements processInterface
 {
+    private int parent;
+    private int firstChild;
+    private int youngerSibling;
+    private int olderSibling;
+
+    public version_2(int id) {
+        this.parent         = id;
+        this.firstChild     = Integer.MIN_VALUE;
+        this.youngerSibling = Integer.MIN_VALUE;
+        this.olderSibling   = Integer.MIN_VALUE;
+    }
+
     public int get_parent() {
-        return 0;
+        return this.parent;
     }
 
-    @Override
     public int get_first_child() {
-        return 0;
+        return this.firstChild;
     }
 
-    @Override
     public int get_older_sibling() {
-        return 0;
+        return this.olderSibling;
     }
 
-    @Override
     public int get_younger_sibling() {
-        return 0;
+        return this.youngerSibling;
     }
 
-    @Override
     public int set_parent(int parentID) {
-        return 0;
+        return this.parent = parentID;
     }
 
-    @Override
     public int set_first_child(int firstChild) {
-        return 0;
+        return this.firstChild = firstChild;
     }
 
-    @Override
     public int set_younger_sibling(int youngerSibling) {
-        return 0;
+        return this.youngerSibling = youngerSibling;
     }
 
-    @Override
     public int set_older_sibling(int olderSibling) {
-        return 0;
+        return this.olderSibling = olderSibling;
     }
 
     /**
@@ -53,7 +58,7 @@ public class version_2 implements processInterface
      * @param newEntry the object to be added as a new entry
      * @return true if the creation is successful
      */
-    @Override
+
     public boolean create(int newEntry) {
         return false;
     }
@@ -64,8 +69,7 @@ public class version_2 implements processInterface
      * @param anEntry the parent to be removed
      * @return true if the removal was successful, or false if not
      */
-    @Override
-    public boolean destroy(int anEntry) {
+    public static boolean destroy(int anEntry) {
         return false;
     }
 }

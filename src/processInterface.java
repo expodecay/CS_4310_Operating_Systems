@@ -2,28 +2,40 @@ public interface processInterface {
 
     //* Getter Methods *//
 
-    int get_parent();
+    static int get_parent() {
+        return 0;
+    }
 
-    int get_first_child();
+    static int get_first_child() {
+        return 0;
+    }
 
-    int get_older_sibling();
+    static int get_older_sibling() {
+        return 0;
+    }
 
-
-    int get_younger_sibling();
+    static int get_younger_sibling() {
+        return 0;
+    }
 
 
     //* Setter Methods *//
 
-    int set_parent(int parentID);
+    static int set_parent(int parentID) {
+        return 0;
+    }
 
+    static int set_first_child(int firstChild) {
+        return 0;
+    }
 
-    int set_first_child(int firstChild);
+    static int set_younger_sibling(int youngerSibling) {
+        return 0;
+    }
 
-
-    int set_younger_sibling(int youngerSibling);
-
-
-    int set_older_sibling(int olderSibling);
+    static int set_older_sibling(int olderSibling) {
+        return 0;
+    }
 
 
     /**
@@ -31,12 +43,16 @@ public interface processInterface {
      * @param newEntry  the object to be added as a new entry
      * @return true if the creation is successful
      * */
-    boolean create(int newEntry);
+    static boolean create(int newEntry){
+        return false;
+    };
 
     /**
      * Recursively destroys all descendents of the calling process
      * @param anEntry  the parent to be removed
      * @return true if the removal was successful, or false if not
      * */
-    boolean destroy(int anEntry);
+    static boolean destroy(int anEntry){
+        return false;
+    }
 }
