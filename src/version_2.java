@@ -58,7 +58,6 @@ public class version_2 implements processInterface
      * @param newEntry the object to be added as a new entry
      * @return true if the creation is successful
      */
-
     public boolean create(int newEntry) {
         return false;
     }
