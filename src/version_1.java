@@ -13,7 +13,7 @@ public class version_1 implements processInterface
     private LinkedList<Integer> children;
 
     public version_1(int id){
-        this.parent = id;
+        this.parent   = id;
         this.children = new LinkedList<>();
     }
 
