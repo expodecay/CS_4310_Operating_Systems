@@ -1,5 +1,5 @@
 //this class simulates the OS
-public class OsSystem {
+public  class OsSystem {
 
     //a constant which holds the total number of each type of PCBs in OS
     private static final int NUMBER_OF_PCBs=100;
@@ -8,8 +8,6 @@ public class OsSystem {
     public static version_1[] LinkedPCB_array= new version_1[NUMBER_OF_PCBs];
     //an array which holds all of the PCBs of version_2 in the OS
     private static version_2[] nonLinkedPCB_array = new version_2[NUMBER_OF_PCBs];
-
-
 
     //constructor
     public OsSystem() {
@@ -21,9 +19,6 @@ public class OsSystem {
         }
 
     }//end of constructor
-
-
-
 
 
     //function which returns the first free slot in LinkedPCB array
@@ -53,9 +48,6 @@ public class OsSystem {
         }
         return result;
     }//end of get_free_slot_nonLinked
-
-
-
 
 
     //puts a version_1 PCB in the array

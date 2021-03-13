@@ -8,6 +8,7 @@
 
 public class version_2 implements processInterface
 {
+    OsSystem myOS= new OsSystem();
     private int parent;
     private int firstChild;
     private int youngerSibling;
@@ -58,8 +59,21 @@ public class version_2 implements processInterface
      * @param newEntry the object to be added as a new entry
      * @return true if the creation is successful
      */
-    public boolean create(int newEntry) {
-        return false;
+    public version_2 create(int newEntry, OsSystem currentArray) {
+        version_2 newPCB = new version_2(newEntry);
+
+        // if parent has no child, set new pcb as its first
+        if(this.get_first_child() == Integer.MIN_VALUE){
+            this.set_first_child(newEntry);
+        }
+        else{
+            // set older sibling to previous index
+            newPCB.set_older_sibling(newEntry-1);
+            // call pcb at previous index and update its sibling
+            currentArray.get_nonLinkedPCB_at_index(newEntry-1).set_younger_sibling(newEntry);
+        }
+
+        return newPCB;
     }
 
     /**
