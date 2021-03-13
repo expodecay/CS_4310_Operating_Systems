@@ -4,21 +4,36 @@ import java.util.LinkedList;
  * Spring 2021
  * CS 4310
  * Test version 1 against version 2.
- * @author Rick Ramirez
+ * @author Rick Ramirez, Rafi Keshishian
  * */
 
 public class version_1_2_test
 {
-    //* All PCBs are implemented as an array of size n *//
-    int n = 10;
-    private  version_1[] linkedPCB    = new version_1[n];
-    private  version_2[] nonLinkedPCB = new version_2[n];
-
-    //* Assume that PCB[0] is the only currently existing process and write 4
-    //test program that performs a series of process creations and
-    //destructions. An example of such a test program is given below.  *//
 
     public static void main(String[] args) {
+
+        //creating an OsSystem object
+        OsSystem myOS= new OsSystem();
+
+        //adding first version_1 PCB into the linkedPCB array
+        myOS.put_LinkedPCB(new version_1(-1),0);
+
+        //adding a child to PCB[0]
+        myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(0).create(0),myOS.get_free_slot_linked());
+        System.out.println("creates first child of PCB0 at "+(myOS.get_free_slot_linked()-1));
+
+        //adding second child to PCB[0]
+        myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(0).create(0),myOS.get_free_slot_linked());
+        System.out.println("creates first child of PCB0 at "+(myOS.get_free_slot_linked()-1));
+
+
+
+
+
+
+        System.out.println(myOS.get_LinkedPCB_at_index(0).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(0).get_children());
+        System.out.println(myOS.get_LinkedPCB_at_index(1).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(1).get_children());
+        System.out.println(myOS.get_LinkedPCB_at_index(2).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(2).get_children());
 
     }
 }
