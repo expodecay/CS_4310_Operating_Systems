@@ -35,5 +35,21 @@ public class version_1_2_test
         System.out.println(myOS.get_LinkedPCB_at_index(1).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(1).get_children());
         System.out.println(myOS.get_LinkedPCB_at_index(2).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(2).get_children());
 
+
+
+
+
+        myOS.put_nonLinkedPCB(new version_2(-1),0);
+
+
+       // myOS.get_nonLinkedPCB_at_index(0).create(0);
+
+        System.out.println(myOS.get_nonLinkedPCB_at_index(0).get_parent()+ "   "+myOS.get_nonLinkedPCB_at_index(0).get_first_child()+"   "+myOS.get_nonLinkedPCB_at_index(0).get_younger_sibling()+"   "+myOS.get_nonLinkedPCB_at_index(0).get_older_sibling());
+
+        myOS.put_nonLinkedPCB(myOS.get_nonLinkedPCB_at_index(0).create(1), myOS.get_free_slot_nonLinked());
+
+        System.out.println(myOS.get_nonLinkedPCB_at_index(0).get_parent()+ "   "+myOS.get_nonLinkedPCB_at_index(0).get_first_child()+"   "+myOS.get_nonLinkedPCB_at_index(0).get_younger_sibling()+"   "+myOS.get_nonLinkedPCB_at_index(0).get_older_sibling());
+
+        myOS.printpcbs();
     }
 }

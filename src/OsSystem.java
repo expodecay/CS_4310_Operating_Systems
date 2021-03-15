@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //this class simulates the OS
 public  class OsSystem {
 
@@ -36,7 +38,7 @@ public  class OsSystem {
     }//end of get_free_slot_linked
 
     //function which returns the first free slot in LinkedPCB array
-    public int get_free_slot_nonLinked() {
+    public static int get_free_slot_nonLinked() {
         int  result=-1;
         int counter=0;
         while (counter<100) {
@@ -75,7 +77,8 @@ public  class OsSystem {
         nonLinkedPCB_array[i]=null;
     }
     //returning the PCB at index i
-    public version_2 get_nonLinkedPCB_at_index(int i) {
+
+    public static version_2 get_nonLinkedPCB_at_index(int i) {
         return nonLinkedPCB_array[i];
     }//end of get_nonLinkedPCB_array_at_index()
 
@@ -89,6 +92,18 @@ public  class OsSystem {
         }
     }
 
+    public void printpcbs(){
+        System.out.println(Arrays.toString(nonLinkedPCB_array));
+
+    }
+
+    public static int get_index_of(version_2 pcb){
+        for(int i = 0; i<NUMBER_OF_PCBs; i++){
+            if(nonLinkedPCB_array[i] == pcb)
+                return i;
+        }
+        return Integer.MIN_VALUE;
+    }
 
 
 }//end of OSSystem class

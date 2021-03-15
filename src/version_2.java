@@ -53,26 +53,28 @@ public class version_2 implements processInterface
         return this.olderSibling = olderSibling;
     }
 
+
     /**
      * Creates a new child of the calling process
      *
      * @param newEntry the object to be added as a new entry
      * @return true if the creation is successful
      */
-    public version_2 create(int newEntry, OsSystem currentArray) {
+    public version_2 create(int newEntry) {
+
+        int Older_sibling = this.get_index_of_youngest_child();
         version_2 newPCB = new version_2(newEntry);
+        newPCB.parent = newEntry;
+        newPCB.set_older_sibling(Older_sibling);
 
-        // if parent has no child, set new pcb as its first
-        if(this.get_first_child() == Integer.MIN_VALUE){
-            this.set_first_child(newEntry);
-        }
-        else{
-            // set older sibling to previous index
-            newPCB.set_older_sibling(newEntry-1);
-            // call pcb at previous index and update its sibling
-            currentArray.get_nonLinkedPCB_at_index(newEntry-1).set_younger_sibling(newEntry);
-        }
+       myOS.put_nonLinkedPCB(newPCB,OsSystem.get_free_slot_nonLinked());
 
+        if(this.firstChild == Integer.MIN_VALUE){
+        this.set_first_child(OsSystem.get_index_of(newPCB));
+        }
+        this.set_first_child(OsSystem.get_index_of(newPCB));
+
+        OsSystem.get_nonLinkedPCB_at_index(this.get_index_of_youngest_child()).set_younger_sibling(OsSystem.get_index_of(newPCB));
         return newPCB;
     }
 
@@ -82,8 +84,28 @@ public class version_2 implements processInterface
      * @param anEntry the parent to be removed
      * @return true if the removal was successful, or false if not
      */
-    public static boolean destroy(int anEntry) {
-        return false;
+    public void destroy(version_2 anEntry) {
+        while(anEntry.get_first_child()!= Integer.MIN_VALUE){
+           // anEntry.destroy(anEntry.get_younger_sibling());
+        }
     }
+
+    public int get_index_of_youngest_child(){
+        if(this.firstChild == Integer.MIN_VALUE){
+            return Integer.MAX_VALUE;
+        }
+        else{
+            int index_of_child=this.firstChild;
+            while(index_of_child != Integer.MAX_VALUE){
+                if(OsSystem.get_nonLinkedPCB_at_index(index_of_child).get_younger_sibling() == Integer.MIN_VALUE){
+                    return  index_of_child;
+                }
+                else
+                    index_of_child = OsSystem.get_nonLinkedPCB_at_index(index_of_child).get_younger_sibling();
+            }
+            return index_of_child;
+        }
+    }
+
 }
 
