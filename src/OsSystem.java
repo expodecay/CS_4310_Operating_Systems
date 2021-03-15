@@ -94,15 +94,15 @@ public class OsSystem {
 	//deletes the pointer to a destroyed PCB
 	public static void free_linkedPCB(version_1 pcb) {
 		for (int i=0 ; i<NUMBER_OF_PCBs; i++) {
-			if (LinkedPCB_array[i].isEqual(pcb))
+			if (LinkedPCB_array[i]== pcb )
 				LinkedPCB_array[i]=null;
 		}
 	}
 	
-	//deletes the pointer to a sestroyed PCB
+	//deletes the pointer to a destroyed PCB
 	public static void free_linkedPCB(version_2 pcb) {
 		for (int i=0 ; i<NUMBER_OF_PCBs; i++) {
-			if (nonLinkedPCB_array[i].isEqual(pcb))
+			if (nonLinkedPCB_array[i]==(pcb))
 				nonLinkedPCB_array[i]=null;
 		}
 	}
