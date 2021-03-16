@@ -85,11 +85,42 @@ public class version_2 implements processInterface
     /**
      * Recursively destroys all descendents of the calling process
      *
-     * @param anEntry the parent to be removed
-     * @return true if the removal was successful, or false if not
+     * @param rootPCB the parent to be removed
      */
-    public static boolean destroy(int anEntry) {
-        return false;
+    public void destroy(version_2 rootPCB) {
+       // OsSystem.free_nonlinkedPCB(rootPCB);
+
+        System.out.println("parent: " + rootPCB.parent);
+        System.out.println("first child:" + rootPCB.firstChild);
+        System.out.println("younger sibling: " + rootPCB.youngerSibling);
+        System.out.println("older sinling: " + rootPCB.olderSibling);
+
+        // Base case: parent with no children
+        if(rootPCB.get_first_child() == Integer.MIN_VALUE && rootPCB.get_younger_sibling() == Integer.MIN_VALUE){
+            System.out.println("here:  Kill the node, set parent's first child to MIN_VALUE");
+            OsSystem.get_nonLinkedPCB_at_index(rootPCB.get_parent()).set_first_child(Integer.MIN_VALUE);
+            OsSystem.free_nonlinkedPCB(rootPCB);
+        }
+        else {
+            // Jump to the first child and check if it has children
+            if(rootPCB.get_first_child() != Integer.MIN_VALUE) {
+                System.out.println("here1");
+                destroy(OsSystem.get_nonLinkedPCB_at_index(rootPCB.get_first_child()));
+
+                // set caller's first child to the second in line
+                OsSystem.get_nonLinkedPCB_at_index(rootPCB.get_parent()).set_first_child(rootPCB.youngerSibling);
+                OsSystem.free_nonlinkedPCB(rootPCB);
+            }
+            else{
+                while (rootPCB.get_younger_sibling() != Integer.MIN_VALUE) {
+                    System.out.println("here2");
+                    destroy(OsSystem.get_nonLinkedPCB_at_index(rootPCB.get_younger_sibling()));
+                    OsSystem.free_nonlinkedPCB((rootPCB));
+                    OsSystem.get_nonLinkedPCB_at_index(rootPCB.get_older_sibling()).set_younger_sibling(Integer.MIN_VALUE);
+
+                }
+            }
+        }
     }
     
     

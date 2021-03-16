@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //this class simulates the OS
 public class OsSystem {
 	
@@ -100,7 +102,7 @@ public class OsSystem {
 	}
 	
 	//deletes the pointer to a destroyed PCB
-	public static void free_linkedPCB(version_2 pcb) {
+	public static void free_nonlinkedPCB(version_2 pcb) {
 		for (int i=0 ; i<NUMBER_OF_PCBs; i++) {
 			if (nonLinkedPCB_array[i]==(pcb))
 				nonLinkedPCB_array[i]=null;
@@ -116,7 +118,10 @@ public class OsSystem {
 		
 		return Integer.MIN_VALUE;
 	}
-	
+
+	public void printPCB(){
+		System.out.println(Arrays.toString(nonLinkedPCB_array));
+	}
 	
 
 
