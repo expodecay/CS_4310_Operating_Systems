@@ -26,7 +26,7 @@ public interface processInterface {
      * @param newEntry  the object to be added as a new entry
      * @return true if the creation is successful
      * */
-    static boolean create(int newEntry){ return false; }
+    public processInterface create(int newEntry);
 
     /**
      * Recursively destroys all descendents of the calling process

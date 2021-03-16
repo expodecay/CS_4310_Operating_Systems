@@ -11,68 +11,74 @@ public class version_1_2_test
 {
 
     public static void main(String[] args) {
+    	
+    	//creating an OsSystem object
+    	OsSystem myOS= new OsSystem();
+    	
+    	
+    	
+    	//start of testing version_1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    	for (int j=0 ; j<1000000; j++) {
+    	
+    	
+    	myOS.put_LinkedPCB(new version_1(-1),0);
+    	
+    	//creating first child for pcb0 at pcb1
+    	myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(0).create(0),myOS.get_free_slot_linked());
+    	
+    	//creating 50 children for pcb1
+    	for (int i=0; i<50; i++) {
+    		myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(1).create(1),myOS.get_free_slot_linked());
+    	}
+    	
+    	//destroying pcb1 which will consequently destroy all pcb1's 50 children too
+    	myOS.get_LinkedPCB_at_index(0).destroy(myOS.get_LinkedPCB_at_index(1));
+    	
+    	
+    	
+    	}//End of testing version_1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    	
+    	
+    	System.out.print("first finished\n\n\n");
+    	
+    	
+    	//start of testing version_2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    	for (int j=0; j<1000000; j++) {
+    		
+    		//creating the first pcb at 0
+    		myOS.put_nonLinkedPCB(new version_2(-1), 0);
+    		
+    		
+    		//creating first child of pcb o at pcb1
+    		myOS.get_nonLinkedPCB_at_index(0).create(0);
+    		
+    		//creating 50 children for pcb1
+    		
+    			myOS.get_nonLinkedPCB_at_index(1).create(1);
+    			myOS.get_nonLinkedPCB_at_index(1).create(1);
+    			
+    			for (int i=0; i<50; i++) {
+    				myOS.get_nonLinkedPCB_at_index(1).create(1);
+    			}
+    		
+    		
+    		
+    		
+    		//destroying pcb1 which will consequently destroy all pcb1's 50 children too
+    		myOS.get_nonLinkedPCB_at_index(0).destroy(myOS.get_nonLinkedPCB_at_index(1));
+    		
 
-        //creating an OsSystem object
-        OsSystem myOS= new OsSystem();
+    		
+    	}//End of testing version_1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+    	
+    	
+    	
+    	System.out.print("second finished");
+    	
+    	
+    	
+    	
+    
 
-        //adding first version_1 PCB into the linkedPCB array
-        myOS.put_LinkedPCB(new version_1(-1),0);
-
-        //adding a child to PCB[0]
-        myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(0).create(0),myOS.get_free_slot_linked());
-        System.out.println("creates first child of PCB0 at "+(myOS.get_free_slot_linked()-1));
-
-        //adding second child to PCB[0]
-        myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(0).create(0),myOS.get_free_slot_linked());
-        System.out.println("creates first child of PCB0 at "+(myOS.get_free_slot_linked()-1));
-
-        //adding a child to PCB[1]
-        myOS.put_LinkedPCB(myOS.get_LinkedPCB_at_index(1).create(1),myOS.get_free_slot_linked());
-
-
-
-
-
-
-        System.out.println(myOS.get_LinkedPCB_at_index(0).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(0).get_children());
-        System.out.println(myOS.get_LinkedPCB_at_index(1).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(1).get_children());
-        System.out.println(myOS.get_LinkedPCB_at_index(2).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(2).get_children());
-        System.out.println(myOS.get_LinkedPCB_at_index(3).get_parent()+ "   "+myOS.get_LinkedPCB_at_index(2).get_children());
-
-
-
-        //testing for version2
-        myOS.put_nonLinkedPCB(new version_2(-1), 0);
-
-        myOS.get_nonLinkedPCB_at_index(0).create(0);
-        myOS.get_nonLinkedPCB_at_index(1).create(1);
-        myOS.get_nonLinkedPCB_at_index(0).create(0);
-
-
-
-        System.out.println(myOS.get_nonLinkedPCB_at_index(0).get_parent()+ "   "+myOS.get_nonLinkedPCB_at_index(0).get_first_child()
-                +"   "+myOS.get_nonLinkedPCB_at_index(0).get_older_sibling()+"   "+myOS.get_nonLinkedPCB_at_index(0).get_younger_sibling());
-
-        System.out.println(myOS.get_nonLinkedPCB_at_index(1).get_parent()+ "   "+myOS.get_nonLinkedPCB_at_index(1).get_first_child()
-                +"   "+myOS.get_nonLinkedPCB_at_index(1).get_older_sibling()+"   "+myOS.get_nonLinkedPCB_at_index(1).get_younger_sibling());
-
-        System.out.println(myOS.get_nonLinkedPCB_at_index(2).get_parent()+ "   "+myOS.get_nonLinkedPCB_at_index(2).get_first_child()
-                +"   "+myOS.get_nonLinkedPCB_at_index(2).get_older_sibling()+"   "+myOS.get_nonLinkedPCB_at_index(2).get_younger_sibling());
-
-        System.out.println(myOS.get_nonLinkedPCB_at_index(3).get_parent()+ "   "+myOS.get_nonLinkedPCB_at_index(3).get_first_child()
-                +"   "+myOS.get_nonLinkedPCB_at_index(3).get_older_sibling()+"   "+myOS.get_nonLinkedPCB_at_index(3).get_younger_sibling());
-
-        System.out.println("#########################################");
-
-        myOS.printPCB();
-
-        myOS.get_nonLinkedPCB_at_index(0).destroy(myOS.get_nonLinkedPCB_at_index(0));
-
-        //########
-        myOS.printPCB();
-
-        //myOS.get_nonLinkedPCB_at_index(1).destroy(myOS.get_nonLinkedPCB_at_index(1));
-        //PCB[0]'s first child is now node 3
-        //System.out.println(myOS.get_nonLinkedPCB_at_index(0).get_first_child());
     }
 }
