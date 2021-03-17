@@ -14,7 +14,7 @@ public class OsSystem {
 	//constructor
 	public OsSystem() {
 		//initializing the PCB array to NULL
-		for(int i=0;i<100;i++) {
+		for(int i=0;i<NUMBER_OF_PCBs;i++) {
 			LinkedPCB_array[i]=null;
 			nonLinkedPCB_array[i]=null;
 		}
@@ -24,10 +24,10 @@ public class OsSystem {
 	public int get_free_slot_linked() {
 		int  result=-1;
 		int counter=0;
-		while (counter<100) {
+		while (counter<NUMBER_OF_PCBs) {
 			if (LinkedPCB_array[counter]==null) {
 				result=counter;
-				counter=100;
+				counter=NUMBER_OF_PCBs;
 			}
 			counter++;
 		}
@@ -38,7 +38,7 @@ public class OsSystem {
 	public static int get_free_slot_nonLinked() {
 		int  result=-1;
 		int counter=0;
-		while (counter<100) {
+		while (counter<NUMBER_OF_PCBs) {
 			if (nonLinkedPCB_array[counter]==null) {
 				result=counter;
 				counter=100;
