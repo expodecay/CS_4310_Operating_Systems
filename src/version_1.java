@@ -1,13 +1,13 @@
 /**
  * Spring 2021
  * CS 4310
- * Version 2 requires dynamic memory management. Each PCB maintains a linked list whose entries point to its children.
+ * Version 1 requires dynamic memory management. Each PCB maintains a linked list whose entries point to its children.
  * @author Rick Ramirez, Rafi Keshishian
  * */
 
 import java.util.LinkedList;
 
-public class version_1 implements processInterface
+public class version_1
 {
     
 	//an integer which holds the index of the parent 
