@@ -22,7 +22,6 @@ public class version_1 implements processInterface
         this.children = new LinkedList<version_1>();
     }//end of constructor
 
-    
     //returns index of thisPCB's parent
     public int get_parent() {
         return this.parent;
@@ -32,8 +31,6 @@ public class version_1 implements processInterface
     public LinkedList<version_1> get_children(){
     	return children;
     }
-    
-
 
     //creates a new PCB and adds it to the children of this pcb
     public  version_1 create(int newEntry) {
@@ -43,7 +40,6 @@ public class version_1 implements processInterface
         
     }
 
-   
     //destroys process q and all its children
     public void  destroy(version_1 q) {
     	
@@ -51,23 +47,16 @@ public class version_1 implements processInterface
     	while(!(q.get_children().isEmpty())) {
     		q.destroy(q.get_children().getFirst());
     	}
-    	
     	//removing q from the children
     	this.children.remove(q);
-    	
     	//removing the PCB from the OS array
     	OsSystem.free_linkedPCB(q);
-    	
-        
     }//end of destroy()
-    
-    
+
     //determines if to PCBs are equal
     public boolean isEqual(version_1 pcb) {
-    	
     	if(this.parent==pcb.get_parent()  && this.children==pcb.get_children())
     		return true;
-    	
     	return false;
     }//end of isEqual;
 

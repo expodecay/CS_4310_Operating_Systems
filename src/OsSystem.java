@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //this class simulates the OS
 public class OsSystem {
 	
@@ -8,24 +10,16 @@ public class OsSystem {
 	public static version_1[] LinkedPCB_array= new version_1[NUMBER_OF_PCBs];
 	//an array which holds all of the PCBs of version_2 in the OS
 	private static version_2[] nonLinkedPCB_array = new version_2[NUMBER_OF_PCBs];
-	
-	
-	
+
 	//constructor
 	public OsSystem() {
-		
 		//initializing the PCB array to NULL
 		for(int i=0;i<100;i++) {
 			LinkedPCB_array[i]=null;
 			nonLinkedPCB_array[i]=null;
 		}
-		
 	}//end of constructor
-	
-	
-	
-	
-	
+
 	//function which returns the first free slot in LinkedPCB array
 	public int get_free_slot_linked() {
 		int  result=-1;
@@ -51,14 +45,9 @@ public class OsSystem {
 			}
 			counter++;
 		}
-		
 		return result;
 	}//end of get_free_slot_nonLinked
-	
-	
-	
-	
-	
+
 	//puts a version_1 PCB in the array
 	public void put_LinkedPCB(version_1 pcb , int i) {
 		LinkedPCB_array[i]=pcb;	
@@ -72,8 +61,7 @@ public class OsSystem {
 	public version_1 get_LinkedPCB_at_index(int i) {
 		return LinkedPCB_array[i];
 	}//end og get_PCB_at_index
-	
-	
+
 	//puts a version2 PCB into the array
 	public static void put_nonLinkedPCB(version_2 pcb, int i) {
 		nonLinkedPCB_array[i]=pcb;
@@ -85,12 +73,9 @@ public class OsSystem {
 	}
 	
 	//returning the PCB at index i
-	
 	public static version_2 get_nonLinkedPCB_at_index(int i) {
 		return nonLinkedPCB_array[i];
 	}//end of get_nonLinkedPCB_array_at_index()
-	
-	
 	
 	//deletes the pointer to a destroyed PCB
 	public static void free_linkedPCB(version_1 pcb) {
@@ -114,14 +99,12 @@ public class OsSystem {
 			if (nonLinkedPCB_array[i]==pcb)
 					return i;
 		}
-		
 		return Integer.MIN_VALUE;
 	}
-	
-	
 
-
-	
-	
+	public void printPCB(){
+		System.out.println(Arrays.toString(LinkedPCB_array));
+		System.out.println(Arrays.toString(nonLinkedPCB_array));
+	}
 
 }//end of OSSystem class
