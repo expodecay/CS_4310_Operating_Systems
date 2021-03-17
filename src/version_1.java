@@ -14,7 +14,6 @@ public class version_1
 	private int parent;
 	//a linked list that holds all the children of this process
     private LinkedList<version_1> children;
-
     
     //constructor
     public version_1(int id){
@@ -37,7 +36,6 @@ public class version_1
         version_1 newPCB=new version_1(newEntry);
         this.children.add(newPCB);
         return newPCB;
-        
     }
 
     //destroys process q and all its children

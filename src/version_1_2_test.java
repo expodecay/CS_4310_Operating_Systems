@@ -9,7 +9,6 @@ import java.util.LinkedList;
 
 public class version_1_2_test
 {
-
     public static void main(String[] args) {
 
         System.out.println("Creating two empty PCB arrays of size 100.");

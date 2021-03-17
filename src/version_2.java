@@ -20,10 +20,6 @@ public class version_2
         this.olderSibling   = Integer.MIN_VALUE;
     }
 
-    public int get_parent() {
-        return this.parent;
-    }
-
     public int get_first_child() {
         return this.firstChild;
     }
@@ -34,10 +30,6 @@ public class version_2
 
     public int get_younger_sibling() {
         return this.youngerSibling;
-    }
-
-    public int set_parent(int parentID) {
-        return this.parent = parentID;
     }
 
     public int set_first_child(int firstChild) {
